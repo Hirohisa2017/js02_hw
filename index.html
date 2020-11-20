@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Diary</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- titel1 = the date of the day -->
+    <h1 id="title_1"></h1> 
+    <form name="myForm" action="" onsubmit="return false;" method="post" required>
+        What did you do today?: 
+        <p>
+        <input type="text" id="title_2" placeholder="Explain outline here" maxlength='30' autofocus>
+        <textarea id="memo" placeholder="Place what did you do?" autofocus></textarea>
+        <input type="submit" id="save">
+        </p>
+    </form>
+
+    <div class="table">
+        <table border="1">
+            <tr>
+                <th>Date</th>
+                <th>Outline</th>
+                <th>What did you do?</th>
+            </tr>
+            <tr id="table_element">
+                <th id="Date"></th>
+                <th id="Outline"></th>
+                <th id="what"></th>
+            </tr>
+
+        </table>
+
+    </div>
+    
+    
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script>
+    //
+    var date = new Date();
+    var n = date.toDateString(); 
+
+    document.getElementById("title_1").innerHTML=n;
+
+    document.getElementById("Date").innerHTML=n;
+
+    $("#save").on('click',function submit(){
+
+    const title_2 = document.getElementById("title_2").value;
+    const memo = document.getElementById("memo").value;
+
+    console.log(title_2)
+    console.log(memo)
+
+    localStorage.setItem(title_2, memo);
+    const html1= `<li><span>${title_2}</span></li>`
+    const html2=`<li><span>${memo}</span></li>`
+
+            $("#Outline").append(html1);
+            $("#what").append(html2);
+
+    });
+
+
+
+    </script>
+</body>
+</html>

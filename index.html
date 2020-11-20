@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Diary</title>
+    <title>Plan</title>
 
     <link rel="stylesheet" href="style.css">
 </head>
@@ -11,7 +11,7 @@
     <!-- titel1 = the date of the day -->
     <h1 id="title_1"></h1> 
     <form name="myForm" action="" onsubmit="return false;" method="post" required>
-        What did you do today?: 
+        What will you do today?: 
         <p>
         <input type="text" id="title_2" placeholder="Explain outline here" maxlength='30' autofocus>
         <textarea id="memo" placeholder="Place what did you do?" autofocus></textarea>
@@ -19,14 +19,15 @@
         </p>
     </form>
 
+    <h1>what is your plan for the next two days?</h1>
     <div class="table">
-        <table border="1">
+        <table id="table_element" border="1">
             <tr>
                 <th>Date</th>
                 <th>Outline</th>
                 <th>What did you do?</th>
             </tr>
-            <tr id="table_element">
+            <tr>
                 <th id="Date"></th>
                 <th id="Outline"></th>
                 <th id="what"></th>
@@ -39,7 +40,7 @@
     
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script>
-    //
+    // retrieve today's plan
     var date = new Date();
     var n = date.toDateString(); 
 
@@ -64,6 +65,44 @@
 
     });
 
+
+    //yesterday
+    var yesterday = new Date((new Date()).valueOf() + 1000*60*60*24);
+    var nyesterday = yesterday.toDateString(); 
+
+    let table = document.getElementById('table_element');
+    let newRow = table.insertRow();
+    
+    let newCell = newRow.insertCell();
+    let newText = document.createTextNode(nyesterday);
+    newCell.appendChild(newText);
+
+    newCell = newRow.insertCell();
+    newText = document.createTextNode("xxx");
+    newCell.appendChild(newText);
+
+    newCell = newRow.insertCell();
+    newText = document.createTextNode("xxx");
+    newCell.appendChild(newText);
+
+    //two days ago
+    var twodaysago = new Date((new Date()).valueOf() + 1000*60*60*24*2);
+    var ntwodaysago = twodaysago.toDateString(); 
+
+    let table2 = document.getElementById('table_element');
+    let newRow2 = table.insertRow();
+    
+    let newCell2 = newRow2.insertCell();
+    let newText2 = document.createTextNode(ntwodaysago);
+    newCell2.appendChild(newText2);
+
+    newCell2 = newRow2.insertCell();
+    newText2 = document.createTextNode("yyy");
+    newCell2.appendChild(newText2);
+
+    newCell2 = newRow2.insertCell();
+    newText2 = document.createTextNode("yyyy");
+    newCell2.appendChild(newText2);
 
 
     </script>
